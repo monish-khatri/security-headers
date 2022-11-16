@@ -1,0 +1,34 @@
+{
+    "name": "monish-khatri/blog-application",
+    "description": "Blog Application using Laravel 9",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MonishKhatri\\Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Monish Khatri",
+            "email": "khatrimk10@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0.2",
+        "kyslik/column-sortable": "^6.4",
+        "laravel/breeze": "^1.13",
+        "laravel/ui": "^4.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MonishKhatri\\Blog\\BlogServiceProvider"
+            ],
+            "aliases": {
+                "Blog": "App\\Models\\Blog"
+            }
+        }
+    }
+}

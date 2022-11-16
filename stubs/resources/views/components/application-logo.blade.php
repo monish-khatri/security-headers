@@ -1,0 +1,1 @@
+<img src="{{ config('blog-application.application_logo') }}" width="235" height="46" alt="Laravel Application">
