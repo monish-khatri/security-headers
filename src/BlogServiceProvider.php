@@ -48,7 +48,7 @@ class BlogServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../stubs/config/blog-application.php', 'blog-application');
         $this->publishes([
             __DIR__ . '/../stubs/config/blog-application.php' => config_path('blog-application.php'),
-        ]);
+        ], 'config');
 
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('change_site_lang', ChangeSiteLanguage::class);
@@ -62,12 +62,12 @@ class BlogServiceProvider extends ServiceProvider
         });
 
         /* define a admin user role */
-        Gate::define('isAdmin', function($user) {
+        Gate::define('isAdmin', function ($user) {
             return $user->role == 'admin';
         });
 
         /* define a user role */
-        Gate::define('isUser', function($user) {
+        Gate::define('isUser', function ($user) {
             return $user->role == 'user';
         });
     }
