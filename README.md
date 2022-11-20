@@ -24,6 +24,10 @@ Blog Application provides a minimal and simple starting point for building a Lar
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
 
+## Installation guide
+
+You can setup the Blog Application by following given steps in [Installation guide](INSTALLATION.md).
+
 ## License
 
 Laravel Blog Application is open-sourced software licensed under the [MIT license](LICENSE.md).

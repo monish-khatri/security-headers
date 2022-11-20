@@ -83,6 +83,10 @@ trait InstallsBladeStack
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/View/Components', app_path('View/Components'));
 
+        // Routes...
+        (new Filesystem)->ensureDirectoryExists(base_path('routes'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/routes', base_path('routes'));
+
         $this->line('');
         $this->components->info('Blog scaffolding installed successfully.');
     }

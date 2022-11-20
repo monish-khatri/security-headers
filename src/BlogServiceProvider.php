@@ -51,7 +51,7 @@ class BlogServiceProvider extends ServiceProvider
         ], 'config');
 
         $router = $this->app->make(Router::class);
-        $router->aliasMiddleware('change_site_lang', ChangeSiteLanguage::class);
+        $router->aliasMiddleware('change_site_language', ChangeSiteLanguage::class);
         $this->commands([
             Console\InstallCommand::class,
         ]);

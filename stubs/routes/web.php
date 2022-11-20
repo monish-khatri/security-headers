@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\ChangeSiteLanguage;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -19,8 +20,12 @@ use Illuminate\Support\Facades\Redirect;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// https://www.youtube.com/watch?v=H-euNqEKACA
-Route::group(['middleware' => ['web', 'auth']], function () {
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::group(['middleware' => ['web', 'auth', 'change_site_language']], function () {
     Route::get('/dashboard', function () {
         $language = session()->get('locale');
         if (! in_array($language, ['en', 'fr', 'hi'])) {
@@ -29,7 +34,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         App::setLocale($language);
         session()->put('locale', $language);
         return view('dashboard');
-    })->middleware(ChangeSiteLanguage::class)->name('dashboard');
+    })->name('dashboard');
 
     Route::get('/published/blogs', [BlogController::class, 'published'])->name('blogs.published');
     Route::post('/trash-bin/{blog}/blogs', [BlogController::class, 'restore'])->name('blogs.restore');
@@ -46,12 +51,18 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::delete('/remove_comment/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
     Route::post('/pin_comment/{comment}', [CommentController::class, 'pinComment'])->name('comments.pin_comment');
 
-    Route::get('change-lang/{locale}', function (Request $request, $locale) {
+    Route::get('change-language/{locale}', function (Request $request, $locale) {
         if (! in_array($locale, ['en', 'fr', 'hi'])) {
             abort(404);
         }
         App::setLocale($locale);
         session()->put('locale', $locale);
         return redirect()->back();
-    })->middleware('change_site_lang')->name('locale.setting');
+    })->name('locale.setting');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+require base_path('routes/auth.php');
