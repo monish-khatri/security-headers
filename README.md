@@ -28,6 +28,10 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 You can setup the Blog Application by following given steps in [Installation guide](INSTALLATION.md).
 
+## Contributing
+Pull requests and feedback are very welcome :)
+on GitHub at https://github.com/monish-khatri/laravel-blog-application
+
 ## License
 
 Laravel Blog Application is open-sourced software licensed under the [MIT license](LICENSE.md).
