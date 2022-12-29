@@ -21,3 +21,11 @@
   - `php artisan security-headers:install`
 - You can publish the package config file & change site logo and favicon with email preference
   - `php artisan vendor:publish --provider="MonishKhatri\SecurityHeaders\SecurityHeadersServiceProvider" --tag="config"`
+- Add Middleware in `app/Http/Kernel.php`
+    ```
+    protected $middlewareGroups = [
+        'web' => [
+            ...
+            \App\Http\Middleware\SecurityHeadersMiddleware::class,
+        ],
+    ```
