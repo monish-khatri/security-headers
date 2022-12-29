@@ -84,7 +84,7 @@ return [
      *                  'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'
      */
 
-    'referrer-policy' => 'no-referrer',
+    'referrer-policy' => 'same-origin',
 
     /*
      * Cross-Origin-Embedder-Policy
