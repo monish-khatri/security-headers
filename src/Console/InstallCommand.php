@@ -1,29 +1,27 @@
 <?php
 
-namespace MonishKhatri\Blog\Console;
+namespace MonishKhatri\SecurityHeaders\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
-use RuntimeException;
-use Symfony\Component\Process\Process;
+
 
 class InstallCommand extends Command
 {
-    use InstallsBladeStack;
+    use InstallSecurityHeadersStack;
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'blog:install';
+    protected $signature = 'security-headers:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install the Blog Application';
+    protected $description = 'Attach OWASP security related headers to HTTP response';
 
     /**
      * Execute the console command.
@@ -32,59 +30,6 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        return $this->installBladeStack();
-    }
-
-    /**
-     * Install the middleware to a group in the application Http Kernel.
-     *
-     * @param  string  $after
-     * @param  string  $name
-     * @param  string  $group
-     * @return void
-     */
-    protected function installMiddlewareAfter($after, $name, $group = 'web')
-    {
-        $httpKernel = file_get_contents(app_path('Http/Kernel.php'));
-
-        $middlewareGroups = Str::before(Str::after($httpKernel, '$middlewareGroups = ['), '];');
-        $middlewareGroup = Str::before(Str::after($middlewareGroups, "'$group' => ["), '],');
-
-        if (! Str::contains($middlewareGroup, $name)) {
-            $modifiedMiddlewareGroup = str_replace(
-                $after.',',
-                $after.','.PHP_EOL.'            '.$name.',',
-                $middlewareGroup,
-            );
-
-            file_put_contents(app_path('Http/Kernel.php'), str_replace(
-                $middlewareGroups,
-                str_replace($middlewareGroup, $modifiedMiddlewareGroup, $middlewareGroups),
-                $httpKernel
-            ));
-        }
-    }
-
-    /**
-     * Run the given commands.
-     *
-     * @param  array  $commands
-     * @return void
-     */
-    protected function runCommands($commands)
-    {
-        $process = Process::fromShellCommandline(implode(' && ', $commands), null, null, null, null);
-
-        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
-            try {
-                $process->setTty(true);
-            } catch (RuntimeException $e) {
-                $this->output->writeln('  <bg=yellow;fg=black> WARN </> '.$e->getMessage().PHP_EOL);
-            }
-        }
-
-        $process->run(function ($type, $line) {
-            $this->output->write('    '.$line);
-        });
+        return $this->installSecurityHeadersStack();
     }
 }

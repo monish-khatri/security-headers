@@ -1,25 +1,23 @@
-## [Blog Application Installation Guide](https://packagist.org/packages/monish-khatri/blog-application)
+## [Laravel Security Headers Installation Guide](https://packagist.org/packages/monish-khatri/security-headers)
 <p>
-    <a href="https://packagist.org/packages/lmonish-khatri/blog-application">
-        <img src="https://img.shields.io/packagist/dt/monish-khatri/blog-application" alt="Total Downloads">
+    <a href="https://packagist.org/packages/monish-khatri/security-headers">
+        <img src="https://img.shields.io/packagist/dt/monish-khatri/security-headers" alt="Total Downloads">
     </a>
-    <a href="https://packagist.org/packages/monish-khatri/blog-application">
-        <img src="https://img.shields.io/packagist/v/monish-khatri/blog-application" alt="Latest Stable Version">
+    <a href="https://packagist.org/packages/monish-khatri/security-headers">
+        <img src="https://img.shields.io/packagist/v/monish-khatri/security-headers" alt="Latest Stable Version">
     </a>
-    <a href="https://packagist.org/packages/monish-khatri/blog-application">
-        <img src="https://img.shields.io/packagist/l/monish-khatri/blog-application" alt="License">
+    <a href="https://packagist.org/packages/monish-khatri/security-headers">
+        <img src="https://img.shields.io/packagist/l/monish-khatri/security-headers" alt="License">
     </a>
-    <a href="https://packagist.org/packages/monish-khatri/blog-application">
-        <img src="https://img.shields.io/packagist/stars/monish-khatri/blog-application" alt="License">
+    <a href="https://packagist.org/packages/monish-khatri/security-headers">
+        <img src="https://img.shields.io/packagist/stars/monish-khatri/security-headers" alt="License">
     </a>
 </p>
 
-### Follow the below steps to install blog application
+### Follow the below steps to install security header package
 - Install the package using
-  - `composer require monish-khatri/blog-application`
+  - `composer require monish-khatri/security-headers`
 - Run below command to publish package classes
-  - `php artisan blog:install`
-- Finally, Run the migrations to create package tables
-  - `php artisan migrate`
+  - `php artisan security-headers:install`
 - You can publish the package config file & change site logo and favicon with email preference
-  - `php artisan vendor:publish --provider="MonishKhatri\Blog\BlogServiceProvider" --tag="config"`
+  - `php artisan vendor:publish --provider="MonishKhatri\SecurityHeaders\SecurityHeadersServiceProvider" --tag="config"`

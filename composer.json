@@ -1,11 +1,23 @@
 {
-    "name": "monish-khatri/blog-application",
-    "description": "Blog Application using Laravel 9",
+    "name": "monish-khatri/security-headers",
+    "description": "Attach OWASP security related headers to HTTP response.",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "laravel",
+        "header",
+        "https",
+        "hsts",
+        "csp",
+        "except-ct",
+        "feature-policy",
+        "clear-site-data",
+        "referrer-policy",
+        "content-security-policy"
+    ],
     "autoload": {
         "psr-4": {
-            "MonishKhatri\\Blog\\": "src/"
+            "MonishKhatri\\SecurityHeaders\\": "src/"
         }
     },
     "authors": [
@@ -16,19 +28,13 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^8.0.2",
-        "kyslik/column-sortable": "^6.4",
-        "laravel/breeze": "^1.13",
-        "laravel/ui": "^4.1"
+        "php": "^8.0.2"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "MonishKhatri\\Blog\\BlogServiceProvider"
-            ],
-            "aliases": {
-                "Blog": "App\\Models\\Blog"
-            }
+                "MonishKhatri\\SecurityHeaders\\SecurityHeadersServiceProvider"
+            ]
         }
     }
 }
