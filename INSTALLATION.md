@@ -19,7 +19,7 @@
   - `composer require monish-khatri/security-headers`
 - Run below command to publish package classes
   - `php artisan security-headers:install`
-- You can publish the package config file & change site logo and favicon with email preference
+- You can publish the package config file
   - `php artisan vendor:publish --provider="MonishKhatri\SecurityHeaders\SecurityHeadersServiceProvider" --tag="config"`
 - Add Middleware in `app/Http/Kernel.php`
     ```
